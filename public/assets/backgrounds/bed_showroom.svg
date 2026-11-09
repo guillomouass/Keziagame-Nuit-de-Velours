@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="bs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe6f7" stop-opacity="1"/><stop offset="1" stop-color="#d8c8ea" stop-opacity="1"/></linearGradient><radialGradient id="sp" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#fff" stop-opacity="0.8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1280" height="720" fill="url(#bs)"/><circle cx="640" cy="120" r="260" fill="url(#sp)"/>
+  <rect x="0" y="560" width="1280" height="160" fill="#b2443a"/><rect y="556" width="1280" height="6" fill="#e8d3a2"/>
+  <rect x="250" y="250" width="780" height="200" rx="24" fill="#5c4389"/><text x="640" y="320" font-family="Georgia, serif" font-size="40" font-weight="700" text-anchor="middle" fill="#f7f1ff">Literie &amp; Rêves</text>
+  <rect x="230" y="440" width="820" height="110" rx="30" fill="#f7f1ff"/><rect x="230" y="500" width="820" height="70" rx="20" fill="#b9a7e0"/>
+  <rect x="250" y="566" width="26" height="60" fill="#3d2c5c"/><rect x="1004" y="566" width="26" height="60" fill="#3d2c5c"/>
+  <rect x="250" y="380" width="150" height="70" rx="30" fill="#ffffff" stroke="#d8c8ea" stroke-width="4"/><rect x="262" y="440" width="150" height="70" rx="30" fill="#ffffff" stroke="#d8c8ea" stroke-width="4"/>
+  <path d="M420 470 Q700 430 1040 470 L1040 540 Q700 520 420 540 Z" fill="#c9b8ef" opacity="0.0"/></svg>

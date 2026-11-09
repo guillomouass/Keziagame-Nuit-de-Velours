@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><defs><linearGradient id="ti" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2e48" stop-opacity="1"/><stop offset="1" stop-color="#221a2c" stop-opacity="1"/></linearGradient></defs>
+  <path fill-rule="evenodd" fill="url(#ti)" d="M0 0 H1280 V720 H0 Z M150 110 Q150 80 180 80 H600 Q630 80 630 110 V420 Q630 450 600 450 H180 Q150 450 150 420 Z M680 110 Q680 80 710 80 H1100 Q1130 80 1130 110 V420 Q1130 450 1100 450 H710 Q680 450 680 420 Z"/>
+  <path d="M150 110 Q150 80 180 80 H600 Q630 80 630 110 V420 Q630 450 600 450 H180 Q150 450 150 420 Z M680 110 Q680 80 710 80 H1100 Q1130 80 1130 110 V420 Q1130 450 1100 450 H710 Q680 450 680 420 Z" fill="none" stroke="#8a7a9a" stroke-width="10"/>
+  <rect x="0" y="0" width="1280" height="40" fill="#1a1422"/><rect x="0" y="34" width="1280" height="8" fill="#ffcf7a" opacity="0.5"/>
+  <rect x="80" y="300" width="230" height="420" rx="40" fill="#2f4a8a"/><rect x="96" y="316" width="198" height="200" rx="30" fill="#3d5ca0"/>
+  <rect x="970" y="300" width="230" height="420" rx="40" fill="#2f4a8a"/><rect x="986" y="316" width="198" height="200" rx="30" fill="#3d5ca0"/></svg>

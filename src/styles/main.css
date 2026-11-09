@@ -1,0 +1,830 @@
+/* ============================================================
+   À la conquête du cœur de Kezia — interface
+   ============================================================ */
+:root {
+  --plum: #1d1028;
+  --plum-2: #2c1840;
+  --plum-glass: rgba(29, 16, 40, 0.86);
+  --terra: #d4643f;
+  --gold: #f4c25a;
+  --cream: #fff6ea;
+  --rose: #ff8fa3;
+  --text: #fff6ea;
+  --muted: #cdb9d6;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Nunito', system-ui, sans-serif;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; overflow: hidden; overscroll-behavior: none; -webkit-text-size-adjust: 100%; background: #0d0614; color: var(--text); font-family: var(--sans); }
+body { touch-action: none; user-select: none; -webkit-user-select: none; }
+button { font-family: inherit; }
+
+#game-root { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+#game-root canvas { display: block; }
+#ui { position: fixed; inset: 0; pointer-events: none; z-index: 10; }
+#ui > * { pointer-events: auto; }
+.hidden { display: none !important; }
+
+/* ---------------------------------------------------------------- loader */
+#loader { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, #3a1d4a, #0d0614 70%); z-index: 50; transition: opacity .8s; }
+#loader > div { text-align: center; }
+#loader .heart { width: 72px; height: 72px; animation: beat 1s infinite; }
+#loader .bar { width: min(320px, 70vw); height: 6px; border-radius: 6px; background: #ffffff1a; margin: 18px auto 10px; overflow: hidden; }
+#loader .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--terra), var(--gold)); transition: width .2s; }
+#loader p { text-align: center; color: var(--muted); font-size: 14px; letter-spacing: .08em; }
+@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.15); } 30% { transform: scale(.98); } 45% { transform: scale(1.1); } }
+
+/* ---------------------------------------------------------------- menu */
+#menu { position: absolute; inset: 0; z-index: 40; display: flex; align-items: center; background: #1a1240 center / cover no-repeat; }
+#menu::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13, 6, 20, .88) 0%, rgba(13, 6, 20, .55) 45%, rgba(13, 6, 20, 0) 75%); }
+#menu .panel { position: relative; padding: 0 clamp(20px, 7vw, 90px); max-width: 620px; }
+#menu .kicker { font-size: clamp(11px, 1.6vw, 14px); letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+#menu h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 6.4vw, 72px); line-height: 1.02; margin: 0 0 8px; text-shadow: 0 4px 30px #0008; }
+#menu h1 em { color: var(--rose); font-style: italic; }
+#menu .sub { color: var(--muted); font-size: clamp(13px, 1.8vw, 17px); margin: 0 0 clamp(16px, 3.5vh, 34px); }
+.menu-buttons { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.btn { appearance: none; border: 1px solid #ffffff2a; background: #ffffff10; color: var(--text); padding: 12px 22px; border-radius: 999px; font-size: clamp(14px, 1.9vw, 17px); font-weight: 700; cursor: pointer; transition: transform .15s, background .2s, border-color .2s; backdrop-filter: blur(6px); }
+.btn:hover, .btn:focus-visible { background: #ffffff22; border-color: var(--gold); transform: translateX(4px); outline: none; }
+.btn.primary { background: linear-gradient(90deg, var(--terra), #e88a4a); border-color: transparent; box-shadow: 0 8px 30px #d4643f55; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.small { padding: 8px 16px; font-size: 14px; }
+.btn[disabled] { opacity: .4; cursor: default; transform: none; }
+#menu .credit { position: absolute; bottom: calc(14px + var(--safe-b)); right: 18px; font-size: 12px; color: #ffffff80; }
+
+/* ---------------------------------------------------------------- modales */
+.modal { position: absolute; inset: 0; z-index: 45; display: grid; place-items: center; background: rgba(13, 6, 20, .72); backdrop-filter: blur(6px); padding: 16px; }
+.modal .sheet { background: linear-gradient(160deg, #2c1840, #1d1028); border: 1px solid #f4c25a44; border-radius: 22px; padding: clamp(18px, 3vw, 30px); width: min(760px, 100%); max-height: calc(var(--vh-px, 100vh) * .92); overflow: auto; box-shadow: 0 30px 80px #0009; }
+.modal h2 { font-family: var(--serif); margin: 0 0 6px; font-size: clamp(22px, 3.4vw, 32px); }
+.modal .muted { color: var(--muted); font-size: 14px; margin: 0 0 16px; }
+.modal .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.opt { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #ffffff12; }
+.opt input[type=range] { width: min(260px, 45vw); accent-color: var(--terra); }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.mem { border-radius: 16px; padding: 12px; background: #ffffff0c; border: 1px solid #ffffff14; text-align: center; cursor: pointer; transition: transform .15s, border-color .2s; }
+.mem:hover { transform: translateY(-3px); border-color: var(--gold); }
+.mem img { width: 64px; height: 64px; filter: drop-shadow(0 6px 12px #0006); }
+.mem b { display: block; font-size: 14px; margin-top: 6px; }
+.mem small { color: var(--muted); font-size: 12px; }
+.mem.locked { opacity: .45; cursor: default; }
+.mem.locked img { filter: brightness(0) invert(.25); }
+.mem.unique { border-color: #f4c25a99; background: radial-gradient(circle at 50% 0, #f4c25a26, #ffffff08); }
+.mem-detail { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; }
+.mem-detail img { width: 120px; }
+.chapters { display: grid; gap: 8px; }
+.chap { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 14px; background: #ffffff0c; border: 1px solid #ffffff14; cursor: pointer; text-align: left; color: var(--text); font-size: 15px; }
+.chap:hover { border-color: var(--gold); }
+.chap .n { font-family: var(--serif); font-size: 22px; color: var(--gold); width: 34px; }
+.chap small { display: block; color: var(--muted); }
+.chap.locked { opacity: .4; cursor: default; }
+
+/* ---------------------------------------------------------------- HUD */
+#hud { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: flex-start; padding: calc(10px + env(safe-area-inset-top, 0px)) 14px 0; pointer-events: none; z-index: 20; }
+#hud > * { pointer-events: auto; }
+.meter { display: flex; align-items: center; gap: 10px; background: var(--plum-glass); border: 1px solid #ffffff1c; padding: 6px 14px 6px 8px; border-radius: 999px; box-shadow: 0 6px 20px #0005; }
+.meter .hrt { position: relative; width: 30px; height: 28px; }
+.meter .hrt svg { position: absolute; inset: 0; }
+.meter .lbl { font-size: 12px; line-height: 1.1; color: var(--muted); }
+.meter .lbl b { display: block; color: var(--text); font-size: 15px; }
+.objective { margin-top: 8px; max-width: min(420px, 60vw); background: var(--plum-glass); border-left: 3px solid var(--gold); padding: 6px 12px; border-radius: 0 12px 12px 0; font-size: 13px; color: var(--cream); transition: opacity .4s; }
+.objective:empty { opacity: 0; }
+.hud-right { display: flex; gap: 8px; }
+.iconbtn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid #ffffff22; background: var(--plum-glass); color: var(--text); font-size: 18px; cursor: pointer; display: grid; place-items: center; }
+.iconbtn:hover { border-color: var(--gold); }
+.plus { position: absolute; left: 44px; top: 4px; font-weight: 800; color: var(--rose); animation: plus 1.4s forwards; pointer-events: none; }
+@keyframes plus { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-30px); } }
+
+/* ---------------------------------------------------------------- dialogue */
+#dialogue { position: absolute; left: 50%; bottom: calc(14px + var(--safe-b)); transform: translateX(-50%); width: min(980px, calc(100% - 24px)); z-index: 30; }
+#dialogue .box { position: relative; background: var(--plum-glass); border: 1px solid #f4c25a55; border-radius: 22px; padding: 18px 22px 18px; min-height: 118px; box-shadow: 0 20px 60px #000a; backdrop-filter: blur(8px); cursor: pointer; }
+#dialogue.has-left .box { padding-left: clamp(120px, 19vw, 200px); }
+#dialogue.has-right .box { padding-right: clamp(120px, 19vw, 200px); }
+#dialogue .portrait { position: absolute; bottom: 0; width: clamp(130px, 20vw, 210px); pointer-events: none; transition: transform .25s; }
+#dialogue .portrait img { width: 100%; display: block; filter: drop-shadow(0 10px 18px #0008); }
+#dialogue .portrait .ov { position: absolute; inset: 0; }
+#dialogue .portrait.left { left: -6px; }
+#dialogue .portrait.right { right: -6px; }
+#dialogue .portrait.pop { animation: pop .3s; }
+@keyframes pop { from { transform: translateY(10px) scale(.96); } to { transform: none; } }
+#dialogue .name { display: inline-block; font-family: var(--serif); font-weight: 700; font-size: clamp(16px, 2.1vw, 20px); padding: 2px 14px; border-radius: 999px; margin-bottom: 6px; color: #1d1028; }
+#dialogue .text { font-size: clamp(15px, 2.1vw, 19px); line-height: 1.5; min-height: 2.9em; }
+#dialogue .text .rest { visibility: hidden; }
+#dialogue .text.narr { font-style: italic; color: #f0dff7; text-align: center; }
+#dialogue .text.think { font-style: italic; color: #e8d6f2; }
+#dialogue .real { display: inline-flex; gap: 6px; align-items: center; margin-left: 10px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); border: 1px solid #f4c25a77; padding: 2px 8px; border-radius: 999px; vertical-align: middle; }
+#dialogue .next { position: absolute; right: 18px; bottom: 10px; font-size: 14px; color: var(--gold); animation: nudge 1s infinite; }
+#dialogue.has-right .next { right: clamp(130px, 20vw, 210px); }
+@keyframes nudge { 50% { transform: translateY(3px); } }
+#choices { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; align-items: center; }
+#choices button { width: min(640px, 100%); text-align: left; padding: 12px 18px; border-radius: 14px; border: 1px solid #ffffff2a; background: rgba(44, 24, 64, .94); color: var(--text); font-size: clamp(14px, 1.9vw, 17px); cursor: pointer; transition: transform .12s, border-color .15s, background .15s; box-shadow: 0 8px 24px #0007; }
+#choices button:hover, #choices button.sel { border-color: var(--gold); background: #3d2259; transform: translateX(6px); }
+#choices button .k { display: inline-block; width: 22px; height: 22px; border-radius: 6px; background: #ffffff1a; text-align: center; line-height: 22px; font-size: 12px; margin-right: 10px; color: var(--gold); }
+#choices .prompt { font-family: var(--serif); font-style: italic; color: var(--cream); text-shadow: 0 2px 8px #000; font-size: clamp(15px, 2vw, 19px); margin-bottom: 4px; }
+
+/* ---------------------------------------------------------------- cartes plein écran */
+#card { position: absolute; inset: 0; z-index: 35; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at 50% 45%, #2c1840 0%, #0d0614 75%); padding: 24px; opacity: 0; transition: opacity .7s; pointer-events: none; }
+#card.on { opacity: 1; pointer-events: auto; }
+#card .num { letter-spacing: .4em; text-transform: uppercase; color: var(--gold); font-size: clamp(12px, 1.7vw, 15px); }
+#card h2 { font-family: var(--serif); font-size: clamp(30px, 6vw, 64px); margin: 10px 0; }
+#card .date { color: var(--rose); font-style: italic; font-family: var(--serif); font-size: clamp(16px, 2.3vw, 22px); }
+#card .txt { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 3vw, 30px); max-width: 900px; line-height: 1.45; }
+#card .hint { position: absolute; bottom: calc(22px + var(--safe-b)); left: 0; right: 0; color: #ffffff70; font-size: 13px; animation: blink 2s infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+#card .orn { width: 120px; height: 2px; margin: 18px auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+#fade { position: absolute; inset: 0; background: #0d0614; opacity: 0; pointer-events: none; transition: opacity .5s; z-index: 34; }
+#fade.on { opacity: 1; }
+
+/* ---------------------------------------------------------------- toasts */
+#toasts { position: absolute; top: calc(70px + env(safe-area-inset-top, 0px)); right: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 42; pointer-events: none; align-items: flex-end; }
+.toast { display: flex; align-items: center; gap: 10px; background: var(--plum-glass); border: 1px solid #f4c25a66; border-radius: 14px; padding: 8px 14px 8px 8px; font-size: 14px; box-shadow: 0 10px 30px #0008; animation: tin .4s, tout .5s 3.2s forwards; max-width: 340px; }
+.toast img { width: 40px; height: 40px; }
+.toast small { display: block; color: var(--gold); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.toast.save { padding: 6px 12px; font-size: 12px; color: var(--muted); border-color: #ffffff22; animation: tin .4s, tout .5s 1.6s forwards; }
+@keyframes tin { from { opacity: 0; transform: translateX(30px); } }
+@keyframes tout { to { opacity: 0; transform: translateX(30px); } }
+
+/* ---------------------------------------------------------------- prompt d'interaction */
+#prompt { position: absolute; left: 50%; bottom: calc(150px + var(--safe-b)); transform: translateX(-50%); background: var(--plum-glass); border: 1px solid #f4c25a88; padding: 8px 16px; border-radius: 999px; font-size: 14px; z-index: 19; white-space: nowrap; animation: tin .25s; }
+#prompt kbd { background: var(--gold); color: var(--plum); border-radius: 6px; padding: 1px 7px; font-weight: 800; margin-right: 6px; font-family: var(--sans); }
+
+/* ---------------------------------------------------------------- contrôles tactiles */
+#touch { position: absolute; left: 0; right: 0; bottom: 0; height: 0; z-index: 25; }
+/* Toutes les commandes partagent la même forme (cercle de --tb), le même style et le même retour à l'appui.
+   Groupe de gauche : ◀ ▶ puis sauter. À droite : discuter (un peu plus grand, liseré doré). */
+#touch { --tb: 64px; --gap: 12px; }
+#touch button { position: absolute; bottom: calc(18px + var(--safe-b)); width: var(--tb); height: var(--tb); padding: 0; border-radius: 50%; border: 2px solid #ffffff55; background: rgba(44, 24, 64, .78); color: #fff; display: grid; place-items: center; touch-action: none; backdrop-filter: blur(6px); box-shadow: 0 6px 18px #0006; transition: transform .08s, background .1s, border-color .1s; }
+#touch button svg { width: 46%; height: 46%; display: block; pointer-events: none; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+#touch button.on { transform: scale(.9); background: rgba(212, 100, 63, .9); border-color: var(--gold); }
+#touch .l { left: 14px; }
+#touch .r { left: calc(14px + var(--tb) + var(--gap)); }
+#touch .j { left: calc(14px + 2 * (var(--tb) + var(--gap))); }
+#touch .a { right: 14px; width: calc(var(--tb) + 8px); height: calc(var(--tb) + 8px); border-color: #f4c25a99; background: rgba(86, 52, 40, .82); }
+#touch .a.ready { animation: beat 1.2s infinite; border-color: var(--gold); box-shadow: 0 0 22px #f4c25a66, 0 6px 18px #0006; }
+.talking #touch { visibility: hidden; } /* jamais de commande par-dessus un dialogue */
+
+/* ---------------------------------------------------------------- téléphone */
+#phone { position: absolute; inset: 0; display: grid; place-items: center; z-index: 32; background: rgba(13, 6, 20, .45); padding: 10px; }
+.device { position: relative; width: min(390px, 92vw); height: min(760px, calc(var(--vh-px, 100vh) * .94)); border-radius: 46px; background: #111; padding: 12px; box-shadow: 0 30px 90px #000c, inset 0 0 0 2px #333; animation: rise .5s cubic-bezier(.2, .8, .2, 1.1); }
+@keyframes rise { from { transform: translateY(60px) rotate(-3deg); opacity: 0; } }
+.screen { position: relative; height: 100%; border-radius: 36px; overflow: hidden; background: #efe7dd; display: flex; flex-direction: column; color: #222; }
+.notch { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 110px; height: 26px; background: #111; border-radius: 20px; z-index: 3; }
+.chat-head { display: flex; align-items: center; gap: 10px; padding: 44px 14px 10px; background: #2c1840; color: #fff; }
+.chat-head .av { display: flex; }
+.chat-head .av img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #f4c25a; border: 2px solid #2c1840; margin-left: -10px; }
+.chat-head .av img:first-child { margin-left: 0; }
+.chat-head b { display: block; font-size: 15px; }
+.chat-head small { color: #cdb9d6; font-size: 12px; }
+.msgs { flex: 1; overflow-y: auto; padding: 14px 10px; display: flex; flex-direction: column; gap: 6px; background: radial-gradient(circle at 20% 10%, #f8efe4, #e9dfd2); }
+.msg { max-width: 78%; padding: 8px 12px; border-radius: 16px; font-size: 14.5px; line-height: 1.35; animation: tin .25s; box-shadow: 0 1px 2px #0002; }
+.msg .who { display: block; font-size: 11px; font-weight: 800; margin-bottom: 2px; }
+.msg.them { align-self: flex-start; background: #fff; border-bottom-left-radius: 4px; }
+.msg.me { align-self: flex-end; background: #d4643f; color: #fff; border-bottom-right-radius: 4px; }
+.msg.sys { align-self: center; background: #2c184022; color: #4a3a55; font-size: 12px; border-radius: 10px; box-shadow: none; text-align: center; }
+.typing { align-self: flex-start; background: #fff; padding: 10px 14px; border-radius: 16px; display: flex; gap: 4px; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: #999; animation: ty 1s infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes ty { 50% { transform: translateY(-4px); opacity: .4; } }
+.replies { padding: 10px; display: flex; flex-direction: column; gap: 6px; background: #fff; border-top: 1px solid #0001; min-height: 58px; }
+.replies button { text-align: left; border: 1px solid #d4643f55; background: #fff6ea; color: #2c1840; border-radius: 14px; padding: 9px 12px; font-size: 14px; cursor: pointer; }
+.replies button:hover { background: #ffe6d4; }
+.replies .ph { color: #aaa; font-size: 13px; padding: 8px 4px; }
+.screen.call { background: linear-gradient(180deg, #2c1840, #4a2466 60%, #d4643f); color: #fff; align-items: center; justify-content: center; text-align: center; gap: 10px; }
+.screen.call .big { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #f4c25a; border: 4px solid #fff3; animation: beat 1.6s infinite; }
+.screen.call b { font-size: 24px; font-family: var(--serif); }
+.screen.call .t { color: #f0dff7; }
+.reimag { font-size: 10px; text-align: center; color: #8a7a96; padding: 4px; background: #fff; }
+
+/* ---------------------------------------------------------------- mini-jeux DOM */
+.mg { position: absolute; inset: 0; z-index: 31; display: grid; place-items: center; background: rgba(13, 6, 20, .55); padding: 12px; }
+.mg .sheet { width: min(860px, 100%); background: linear-gradient(160deg, #2c1840, #1d1028); border: 1px solid #f4c25a44; border-radius: 24px; padding: clamp(14px, 3vw, 26px); box-shadow: 0 30px 80px #000b; }
+.mg h3 { font-family: var(--serif); margin: 0 0 4px; font-size: clamp(20px, 3vw, 28px); }
+.mg p { color: var(--muted); margin: 0 0 12px; font-size: 14px; }
+.tz-clocks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; }
+.tz-clock { background: #ffffff0c; border-radius: 16px; padding: 12px; text-align: center; }
+.tz-clock .h { font-family: var(--serif); font-size: clamp(30px, 6vw, 48px); }
+.tz-clock .s { font-size: 13px; color: var(--muted); }
+.tz-clock .st { margin-top: 6px; font-weight: 700; font-size: 14px; }
+.tz-bar { position: relative; height: 26px; border-radius: 8px; overflow: hidden; display: flex; margin: 6px 0 2px; }
+.tz-bar i { flex: 1; }
+.tz-row { display: grid; grid-template-columns: 110px 1fr; gap: 10px; align-items: center; font-size: 13px; }
+.tz-cursor { position: absolute; top: -4px; bottom: -4px; width: 4px; background: #fff; border-radius: 2px; box-shadow: 0 0 10px #fff; }
+.mg input[type=range] { width: 100%; accent-color: var(--terra); height: 34px; }
+.mg .fb { min-height: 46px; margin: 10px 0; padding: 10px 14px; border-radius: 12px; background: #ffffff0c; font-size: 15px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.legend span::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; background: var(--c); }
+
+.pod-track { position: relative; height: 90px; border-radius: 16px; background: #0d0614; overflow: hidden; margin: 12px 0; border: 1px solid #ffffff1a; }
+.pod-wave { position: absolute; inset: 0; display: flex; align-items: center; gap: 3px; padding: 0 6px; }
+.pod-wave i { flex: 1; background: #7356a6; border-radius: 3px; }
+.pod-zone { position: absolute; top: 0; bottom: 0; background: #4fc38a44; border-left: 2px solid #4fc38a; border-right: 2px solid #4fc38a; }
+.pod-cur { position: absolute; top: 0; bottom: 0; width: 4px; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+.pod-q { min-height: 60px; font-size: 16px; }
+.pod-score { display: flex; gap: 8px; font-size: 24px; }
+
+/* ---------------------------------------------------------------- cinématique & final */
+#cine { position: absolute; inset: 0; z-index: 36; background: #0d0614; display: grid; place-items: center; overflow: hidden; }
+#cine .bg { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 14s ease-out forwards; }
+@keyframes kenburns { from { transform: scale(1.15); filter: brightness(.3); } 20% { filter: brightness(1); } to { transform: scale(1); } }
+#cine .lines { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; padding: 70px 20px calc(26px + var(--safe-b)); background: linear-gradient(180deg, transparent, rgba(13, 6, 20, .88) 45%); }
+#cine .lines p { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 3vw, 30px); margin: 6px 0; opacity: 0; animation: fin 1.2s forwards; text-shadow: 0 3px 14px #000; }
+@keyframes fin { to { opacity: 1; } }
+.sparkle { position: absolute; width: 8px; height: 8px; background: #fff; border-radius: 50%; box-shadow: 0 0 14px #fff, 0 0 30px #f4c25a; animation: tw 2.4s infinite; }
+@keyframes tw { 0%,100% { opacity: 0; transform: scale(.4); } 50% { opacity: 1; transform: scale(1); } }
+
+.letter { width: min(680px, 100%); max-height: calc(var(--vh-px, 100vh) * .86); overflow: auto; background: #fbf4e8; color: #3a2430; border-radius: 6px; padding: clamp(20px, 5vw, 48px); font-family: var(--serif); font-size: clamp(16px, 2.2vw, 19px); line-height: 1.7; box-shadow: 0 30px 90px #000c; animation: rise .8s; }
+.letter p { margin: 0 0 14px; color: inherit; font-size: inherit; }
+.letter .sig { text-align: right; font-style: italic; }
+.hold { position: relative; width: 150px; height: 150px; border-radius: 50%; border: 2px solid #ffffff33; background: radial-gradient(circle, #ffffff10, transparent); cursor: pointer; display: grid; place-items: center; touch-action: none; }
+.hold svg { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); transform: rotate(-90deg); }
+.hold img { width: 70px; transition: filter .2s, transform .2s; }
+.hold.active img { transform: scale(1.15); filter: drop-shadow(0 0 20px #fff); }
+.constel { position: relative; width: min(820px, 94vw); height: min(300px, calc(var(--vh-px, 100vh) * .4)); margin: 0 auto; }
+.constel img { position: absolute; width: 56px; opacity: .15; transition: opacity 1s, filter 1s; }
+.constel img.lit { opacity: 1; filter: drop-shadow(0 0 16px #ffd27a); }
+
+.credits { text-align: center; line-height: 1.8; }
+.credits h2 { font-family: var(--serif); font-size: clamp(28px, 5vw, 52px); margin: 0; }
+.credits .role { color: var(--muted); font-size: 14px; letter-spacing: .1em; text-transform: uppercase; margin-top: 18px; }
+
+@media (max-height: 480px) {
+  #dialogue .box { min-height: 92px; padding-top: 12px; padding-bottom: 12px; }
+  #dialogue .portrait { width: 120px; }
+  #dialogue.has-left .box { padding-left: 112px; }
+  #dialogue.has-right .box { padding-right: 112px; }
+  #touch { --tb: 60px; --gap: 10px; }
+  #prompt { bottom: 96px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* ---------------------------------------------------------------- appel & notifications */
+.callpill { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; background: #1d1028ee; border: 1px solid #4fc38a88; border-radius: 999px; padding: 6px 18px 6px 6px; z-index: 33; box-shadow: 0 10px 30px #0008; animation: tin .4s; }
+.callpill img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #f4c25a; }
+.callpill b { display: block; font-size: 14px; }
+.callpill small { color: #4fc38a; font-size: 12px; }
+.callpill .wave { width: 26px; height: 16px; background: repeating-linear-gradient(90deg, #4fc38a 0 3px, transparent 3px 6px); animation: ty .8s infinite; border-radius: 3px; }
+.notifbar { position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); width: min(460px, 92vw); display: flex; gap: 12px; align-items: center; background: #fff6eaf2; color: #2c1840; border-radius: 20px; padding: 10px 14px; z-index: 33; box-shadow: 0 16px 40px #000a; cursor: pointer; animation: drop .45s cubic-bezier(.2, .8, .2, 1.2); }
+.notifbar img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #f4c25a; }
+.notifbar b { display: block; font-size: 14px; }
+.notifbar span { display: block; font-size: 15px; }
+.notifbar small { color: #8a7a96; font-size: 11px; }
+.notifbar.out { opacity: 0; transform: translate(-50%, -20px); transition: .35s; }
+@keyframes drop { from { transform: translate(-50%, -80px); opacity: 0; } }
+
+/* ============================================================
+   Téléphone en portrait (body.portrait, posé par systems/Layout.js)
+   L'écran est coupé en deux : la scène en haut, un panneau en bas (hauteur --panel-h)
+   pour le dialogue, les choix et les boutons du pouce. L'ordinateur n'est pas concerné.
+   ============================================================ */
+
+/* ============================================================
+   Direction artistique — édition « Nuit de velours »
+   Raffinement de l'interface sans toucher au scénario ni au gameplay.
+   ============================================================ */
+:root {
+  --plum: #170d22;
+  --plum-2: #2a1738;
+  --plum-glass: rgba(24, 13, 34, .91);
+  --terra: #c96b55;
+  --gold: #e9c77e;
+  --cream: #fff8ef;
+  --rose: #e99aad;
+  --text: #fff8ef;
+  --muted: #d0bfd2;
+  --velvet-line: rgba(233, 199, 126, .28);
+  --velvet-shadow: 0 22px 70px rgba(5, 2, 10, .48);
+}
+
+/* Une lumière chaude, discrète, pour donner de la profondeur à l'interface. */
+#game-root { background: radial-gradient(ellipse at 50% 0%, #382044 0%, #170d22 58%, #0b0610 100%); }
+#ui { isolation: isolate; }
+
+/* Menu : couverture cinématographique + panneau éditorial. */
+#menu {
+  background-color: #160d20;
+  background-position: center;
+}
+#menu::before {
+  background:
+    linear-gradient(90deg, rgba(10, 5, 15, .94) 0%, rgba(15, 8, 22, .76) 42%, rgba(15, 8, 22, .12) 100%),
+    linear-gradient(0deg, rgba(10, 5, 15, .46), transparent 46%);
+}
+#menu .panel {
+  width: min(610px, calc(100% - 48px));
+  max-width: 610px;
+  padding: clamp(26px, 4vw, 42px);
+  margin-left: clamp(18px, 4vw, 58px);
+  border: 1px solid rgba(233, 199, 126, .22);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(30, 16, 42, .82), rgba(17, 9, 25, .62));
+  box-shadow: var(--velvet-shadow), inset 0 1px 0 rgba(255,255,255,.07);
+  backdrop-filter: blur(16px) saturate(125%);
+}
+#menu .kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  letter-spacing: .2em;
+  font-size: 11px;
+  font-weight: 800;
+}
+#menu .kicker::before, #menu .kicker::after {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+#menu .kicker::after { transform: rotate(180deg); }
+#menu h1 {
+  letter-spacing: -.035em;
+  line-height: 1.04;
+  margin-top: 14px;
+  text-wrap: balance;
+  text-shadow: 0 8px 34px rgba(0,0,0,.48);
+}
+#menu h1 em {
+  color: #f0b4c2;
+  text-shadow: 0 0 34px rgba(233,154,173,.18);
+}
+#menu .sub {
+  max-width: 38ch;
+  line-height: 1.55;
+  color: #e0d1df;
+}
+.menu-buttons { gap: 9px; width: min(360px, 100%); }
+.menu-buttons .btn {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 19px;
+  border-radius: 15px;
+  border-color: rgba(255,255,255,.13);
+  background: linear-gradient(110deg, rgba(255,255,255,.105), rgba(255,255,255,.035));
+  text-align: left;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+  backdrop-filter: blur(8px);
+}
+.menu-buttons .btn:hover, .menu-buttons .btn:focus-visible {
+  border-color: rgba(233,199,126,.75);
+  background: linear-gradient(110deg, rgba(233,199,126,.18), rgba(255,255,255,.06));
+  transform: translateX(3px);
+}
+.menu-buttons .btn.primary {
+  color: #211326;
+  background: linear-gradient(110deg, #f0d99f, #d9a95f);
+  border-color: #f7e5b8;
+  box-shadow: 0 10px 28px rgba(205,151,76,.24), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.menu-buttons .btn.primary:hover { filter: brightness(1.06); }
+#menu .credit { letter-spacing: .08em; color: rgba(255,248,239,.62); }
+
+/* HUD : éléments plus fins, sans perdre le contraste. */
+.meter, .objective, .iconbtn {
+  box-shadow: 0 8px 26px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.055);
+}
+.meter { border-color: var(--velvet-line); background: rgba(23,13,34,.88); }
+.objective { border-left-color: var(--gold); background: rgba(23,13,34,.88); }
+.iconbtn { border-color: rgba(233,199,126,.3); transition: transform .18s, background .18s, border-color .18s; }
+.iconbtn:active { transform: scale(.94); background: rgba(201,107,85,.35); }
+
+/* Dialogue : panneau de lecture premium, hiérarchie plus claire. */
+#dialogue .box {
+  background: linear-gradient(145deg, rgba(37,21,50,.96), rgba(17,10,25,.94));
+  border: 1px solid rgba(233,199,126,.48);
+  border-radius: 24px;
+  box-shadow: 0 22px 70px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.075);
+  backdrop-filter: blur(16px) saturate(130%);
+}
+#dialogue .name {
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  letter-spacing: .01em;
+}
+#dialogue .text { color: #fff9f2; text-wrap: pretty; }
+#dialogue .text.narr { color: #eadce9; }
+#dialogue .real {
+  background: rgba(233,199,126,.12);
+  color: #f2d99e;
+  border-color: rgba(233,199,126,.42);
+}
+#dialogue .next { color: #f0d28f; text-shadow: 0 2px 12px rgba(233,199,126,.35); }
+#choices .prompt { color: #f5dfb4; }
+#choices button {
+  border-color: rgba(233,199,126,.22);
+  background: linear-gradient(115deg, rgba(48,29,63,.98), rgba(29,17,41,.98));
+  box-shadow: 0 9px 24px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.06);
+}
+#choices button:hover, #choices button.sel {
+  border-color: rgba(233,199,126,.85);
+  background: linear-gradient(115deg, #503354, #33203f);
+}
+#choices button .k { background: rgba(233,199,126,.13); color: #f0d28f; }
+
+/* Modales et cartes : même langage graphique que le menu. */
+.modal .sheet, .mg .sheet {
+  background: linear-gradient(145deg, rgba(48,29,63,.98), rgba(20,12,29,.99));
+  border-color: rgba(233,199,126,.38);
+  box-shadow: 0 28px 90px rgba(0,0,0,.58), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.chap, .mem {
+  border-color: rgba(233,199,126,.16);
+  background: linear-gradient(120deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+}
+.chap:hover, .mem:hover { border-color: rgba(233,199,126,.7); }
+#card {
+  background: radial-gradient(ellipse at 50% 42%, #392044 0%, #1a1025 48%, #09050e 100%);
+}
+#card .orn { height: 1px; width: 150px; box-shadow: 0 0 16px rgba(233,199,126,.28); }
+
+/* Téléphone dans le jeu : contraste doux et bulles plus soignées. */
+.screen { background: #f4eee8; }
+.chat-head { background: linear-gradient(115deg, #2a1738, #47284f); }
+.msgs { background: linear-gradient(155deg, #faf4ec, #eee4dc); }
+.msg.them { border: 1px solid rgba(48,29,63,.07); }
+.msg.me { background: linear-gradient(120deg, #bd624f, #d47a61); }
+.replies { background: #fffaf5; }
+.replies button { border-color: rgba(201,107,85,.32); box-shadow: 0 2px 8px rgba(48,29,63,.06); }
+.replies button:active { background: #f7e5d9; }
+
+/* Portrait : le panneau inférieur devient une surface velours distincte. */
+body.portrait::after {
+  background: linear-gradient(180deg, #2b1938 0%, #1b1027 55%, #100a18 100%);
+  border-top-color: rgba(233,199,126,.42);
+  box-shadow: 0 -12px 38px rgba(0,0,0,.2);
+}
+body.portrait #dialogue .box {
+  background: linear-gradient(150deg, rgba(43,26,57,.98), rgba(19,12,28,.98));
+  border-color: rgba(233,199,126,.5);
+}
+body.portrait #dialogue .text { font-size: clamp(17px, 4.9vw, 19px); }
+body.portrait #dialogue .text.long { font-size: clamp(16.5px, 4.5vw, 17.5px); }
+body.portrait #choices button { background: linear-gradient(110deg, #3b254b, #251832); }
+body.portrait #menu {
+  background-position: 64% center;
+}
+body.portrait #menu::before {
+  background: linear-gradient(0deg, rgba(10,5,15,.98) 0%, rgba(15,8,22,.88) 48%, rgba(15,8,22,.1) 100%);
+}
+body.portrait #menu .panel {
+  width: calc(100% - 28px);
+  margin: 0 14px;
+  padding: 24px 20px calc(42px + var(--safe-b));
+  border: 1px solid rgba(233,199,126,.22);
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(145deg, rgba(30,16,42,.74), rgba(13,7,20,.82));
+  box-shadow: 0 -12px 48px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter: blur(14px);
+}
+body.portrait #menu h1 { font-size: clamp(34px, 10vw, 54px); }
+body.portrait .menu-buttons .btn { min-height: 50px; border-radius: 14px; }
+
+@media (max-width: 380px) {
+  #menu .panel { padding-left: 18px; padding-right: 18px; }
+  body.portrait #menu .panel { padding-left: 16px; padding-right: 16px; }
+  body.portrait #menu h1 { font-size: 34px; }
+  body.portrait #menu .sub { font-size: 13px; }
+}
+
+/* ============================================================
+   Finition premium — cohérence, lisibilité et micro-interactions
+   ============================================================ */
+:root {
+  color-scheme: dark;
+  --velvet-surface: rgba(35, 20, 47, .94);
+  --velvet-surface-raised: rgba(54, 34, 66, .96);
+  --velvet-border: rgba(233, 199, 126, .34);
+  --velvet-focus: 0 0 0 3px rgba(233, 199, 126, .25);
+}
+
+/* Typographie plus nette et rythme visuel constant. */
+html, body, button, input, textarea, select {
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+#menu h1, #card h2, .modal h2, .mg h3 {
+  text-wrap: balance;
+}
+#menu .sub, #dialogue .text, #card .txt {
+  text-wrap: pretty;
+}
+
+/* Boutons : profondeur douce, état tactile explicite et focus accessible. */
+.btn, #choices button, .chap, .mem, .iconbtn, #touch button, .replies button {
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .18s ease, border-color .18s ease,
+    box-shadow .18s ease, transform .18s ease, filter .18s ease;
+}
+.btn:focus-visible, #choices button:focus-visible, .chap:focus-visible,
+.mem:focus-visible, .iconbtn:focus-visible, #touch button:focus-visible,
+.replies button:focus-visible {
+  outline: none;
+  box-shadow: var(--velvet-focus), 0 8px 24px rgba(0,0,0,.28);
+}
+.btn:not([disabled]):active, #choices button:active,
+.chap:not(.locked):active, .mem:not(.locked):active,
+.iconbtn:active, .replies button:active {
+  transform: translateY(1px) scale(.985);
+}
+
+/* Panneaux : bordure lumineuse fine, jamais clinquante. */
+.modal .sheet, .mg .sheet, #dialogue .box {
+  background-clip: padding-box;
+}
+.modal .sheet::before, .mg .sheet::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,.055), transparent 34%);
+}
+.modal .sheet, .mg .sheet { position: relative; }
+
+/* Lecture : contraste renforcé et lignes confortables. */
+#dialogue .text {
+  color: #fffaf5;
+  letter-spacing: .005em;
+  line-height: 1.56;
+}
+#dialogue .name { letter-spacing: .015em; }
+#choices button {
+  line-height: 1.42;
+  min-height: 48px;
+}
+#choices button:focus-visible, #choices button.sel {
+  border-color: #f0d28f;
+  box-shadow: 0 0 0 2px rgba(233,199,126,.14), 0 9px 24px rgba(0,0,0,.26);
+}
+
+/* Téléphone intégré : lecture plus proche d'une messagerie moderne. */
+.msg { line-height: 1.48; }
+.msg .who { letter-spacing: .025em; }
+.replies button { min-height: 44px; line-height: 1.4; }
+
+/* Scrollbars discrètes dans les fenêtres qui peuvent défiler. */
+.modal .sheet, .msgs, #dialogue .box, .mg .sheet {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(233,199,126,.55) transparent;
+}
+.modal .sheet::-webkit-scrollbar, .msgs::-webkit-scrollbar,
+#dialogue .box::-webkit-scrollbar, .mg .sheet::-webkit-scrollbar { width: 6px; }
+.modal .sheet::-webkit-scrollbar-thumb, .msgs::-webkit-scrollbar-thumb,
+#dialogue .box::-webkit-scrollbar-thumb, .mg .sheet::-webkit-scrollbar-thumb {
+  background: rgba(233,199,126,.48);
+  border-radius: 99px;
+}
+
+/* Petits écrans : préserver l'espace utile et éviter les débordements. */
+@media (max-width: 390px) {
+  #dialogue .box { border-radius: 19px; }
+  #dialogue .text { line-height: 1.5; }
+  #choices { gap: 7px; }
+  #choices button { padding: 11px 13px; }
+  .modal { padding: 10px; }
+  .modal .sheet { border-radius: 19px; }
+}
+
+/* Les animations restent élégantes sans gêner les personnes sensibles au mouvement. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ============================================================
+   NUIT DE VELOURS — finition artistique globale
+   Direction : romantique premium, prune profond, champagne et rose poudré.
+   Couche de finition volontairement additive : aucune logique de jeu modifiée.
+   ============================================================ */
+:root {
+  --plum: #211329;
+  --plum-2: #35203f;
+  --plum-glass: rgba(31, 18, 41, .91);
+  --terra: #bd7890;
+  --gold: #e7c995;
+  --cream: #fbf2e9;
+  --rose: #e7aebe;
+  --text: #fff8f2;
+  --muted: #d3c0d5;
+  --velvet-surface: rgba(38, 24, 48, .94);
+  --velvet-surface-raised: rgba(57, 37, 66, .97);
+  --velvet-border: rgba(231, 201, 149, .42);
+}
+
+html, body { background-color: #100a17; }
+#game-root { background: radial-gradient(ellipse at 50% 0%, #35203f 0%, #160e20 62%, #100a17 100%); }
+
+/* Accueil : hiérarchie éditoriale et voile cinématographique. */
+#menu {
+  background-color: #211329;
+  isolation: isolate;
+}
+#menu::before {
+  background:
+    linear-gradient(90deg, rgba(16, 10, 23, .94) 0%, rgba(24, 14, 32, .78) 42%, rgba(24, 14, 32, .12) 100%),
+    linear-gradient(0deg, rgba(16, 10, 23, .52), transparent 42%);
+}
+#menu .panel { max-width: 680px; }
+#menu .kicker { color: var(--gold); letter-spacing: .38em; }
+#menu h1 {
+  letter-spacing: -.035em;
+  text-shadow: 0 5px 32px rgba(0,0,0,.55), 0 0 42px rgba(231,174,190,.12);
+}
+#menu h1 em { color: var(--rose); text-shadow: 0 0 28px rgba(231,174,190,.22); }
+#menu .sub { color: #e0d1df; line-height: 1.65; }
+
+/* Boutons principaux : matière satinée, accent champagne. */
+.btn {
+  border-color: rgba(231,201,149,.32);
+  background: linear-gradient(145deg, rgba(255,255,255,.105), rgba(255,255,255,.035));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 8px 24px rgba(0,0,0,.2);
+  backdrop-filter: blur(12px);
+}
+.btn:hover, .btn:focus-visible {
+  background: linear-gradient(145deg, rgba(231,201,149,.2), rgba(255,255,255,.06));
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(231,201,149,.1), 0 12px 28px rgba(0,0,0,.28);
+}
+.btn.primary {
+  color: #24162a;
+  background: linear-gradient(115deg, #e7c995 0%, #f4dfbd 48%, #dca6b5 100%);
+  border: 1px solid rgba(255,246,232,.72);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 10px 30px rgba(189,120,144,.24);
+}
+.btn.primary:hover { filter: brightness(1.06); }
+
+/* Dialogues : verre prune, filet lumineux et texte ivoire. */
+#dialogue .box {
+  background: linear-gradient(145deg, rgba(43,27,54,.96), rgba(24,15,33,.96));
+  border: 1px solid rgba(231,201,149,.48);
+  box-shadow: 0 22px 65px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.07);
+  backdrop-filter: blur(18px) saturate(115%);
+}
+#dialogue .name {
+  background: linear-gradient(120deg, #e7c995, #f2dfbd);
+  box-shadow: 0 3px 12px rgba(0,0,0,.18);
+}
+#dialogue .text { color: #fff8f2; }
+#dialogue .text.narr { color: #ead8e8; }
+#dialogue .text.think { color: #e8cbd9; }
+#dialogue .real { color: #f0d8a8; border-color: rgba(231,201,149,.48); background: rgba(231,201,149,.07); }
+#dialogue .next { color: #f0d8a8; }
+
+/* Choix : cartes lisibles avec accent rose discret au survol. */
+#choices button {
+  background: linear-gradient(135deg, rgba(55,35,66,.97), rgba(35,22,47,.97));
+  border-color: rgba(231,201,149,.27);
+  box-shadow: 0 8px 25px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.055);
+}
+#choices button:hover, #choices button.sel {
+  background: linear-gradient(120deg, rgba(91,53,82,.98), rgba(54,34,67,.98));
+  border-color: #e7c995;
+  box-shadow: 0 0 0 2px rgba(231,201,149,.11), 0 10px 28px rgba(0,0,0,.3);
+}
+#choices button .k { background: rgba(231,201,149,.14); color: #f0d8a8; }
+#choices .prompt { color: #f4dfbd; }
+
+/* Fenêtres, souvenirs et chapitres : surfaces cohérentes. */
+.modal { background: rgba(12,7,17,.78); backdrop-filter: blur(10px); }
+.modal .sheet, .mg .sheet {
+  background: linear-gradient(155deg, #3b2846 0%, #291a35 52%, #1c1227 100%);
+  border-color: rgba(231,201,149,.42);
+  box-shadow: 0 28px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07);
+}
+.modal h2, .mg h3 { color: #fff4e8; }
+.chap, .mem {
+  background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  border-color: rgba(231,201,149,.2);
+}
+.chap:hover, .mem:hover { border-color: rgba(231,201,149,.72); background-color: rgba(231,201,149,.08); }
+.mem.unique { border-color: rgba(231,201,149,.72); background: radial-gradient(circle at 50% 0, rgba(231,201,149,.18), rgba(255,255,255,.025)); }
+
+/* HUD et commandes : détails champagne sans perdre le contraste. */
+.meter, .iconbtn, .objective, .toast, #prompt {
+  border-color: rgba(231,201,149,.32);
+  box-shadow: 0 8px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.045);
+}
+#touch button {
+  background: linear-gradient(145deg, rgba(68,45,78,.94), rgba(31,19,42,.96));
+  border-color: rgba(231,201,149,.55);
+  box-shadow: 0 8px 22px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.1);
+}
+#touch button.on { background: linear-gradient(145deg, #bd7890, #8e526e); border-color: #f2dfbd; }
+#touch .a { background: linear-gradient(145deg, rgba(91,55,75,.96), rgba(42,25,47,.98)); border-color: rgba(231,201,149,.8); }
+
+/* Téléphone intégré : identité prune/champagne, bulles rose et ivoire. */
+.chat-head { background: linear-gradient(110deg, #35203f, #24152f); }
+.chat-head .av img { border-color: #35203f; background: #e7c995; }
+.msg.me { background: linear-gradient(135deg, #a96580, #bd7890); }
+.msg.them { background: #fffaf5; color: #35243a; }
+.replies button { border-color: rgba(189,120,144,.45); background: #fbf2e9; }
+.replies button:hover { background: #f5e4e8; border-color: #bd7890; }
+
+/* Cartes narratives et lettre : chaleur papier / lumière champagne. */
+#card { background: radial-gradient(ellipse at 50% 42%, #49304e 0%, #24152f 48%, #100a17 100%); }
+#card .num { color: #e7c995; }
+#card .date { color: #e7aebe; }
+#card .orn { background: linear-gradient(90deg, transparent, #e7c995, transparent); }
+.letter { background: linear-gradient(145deg, #fff9ef, #f3e7d9); color: #39283b; box-shadow: 0 30px 100px rgba(0,0,0,.58), inset 0 0 0 1px rgba(174,133,99,.18); }
+
+/* Portrait : préserver le confort tactile et la lisibilité. */
+@media (max-width: 600px) {
+  body.portrait #dialogue .box {
+    background: linear-gradient(150deg, rgba(43,27,54,.98), rgba(24,15,33,.98));
+    border-color: rgba(231,201,149,.5);
+    box-shadow: 0 14px 42px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.07);
+  }
+  body.portrait #choices button { box-shadow: 0 6px 18px rgba(0,0,0,.24); }
+  body.portrait #touch button { min-width: 60px; min-height: 60px; }
+}
+
+/* Accessibilité : limiter les animations décoratives si demandé par le système. */
+@media (prefers-reduced-motion: reduce) {
+  #menu *, #dialogue *, #choices *, #touch * { scroll-behavior: auto; }
+}
+
+body.portrait #game-root { inset: 0 0 var(--panel-h) 0; }
+body.portrait::after { content: ''; position: fixed; left: 0; right: 0; bottom: 0; height: var(--panel-h); background: linear-gradient(180deg, #24133a, #0d0614 70%); border-top: 1px solid #f4c25a33; z-index: 5; pointer-events: none; }
+
+/* HUD : compact, au-dessus de la scène */
+body.portrait #hud { padding: calc(8px + env(safe-area-inset-top, 0px)) 10px 0; }
+body.portrait .meter { padding: 4px 12px 4px 6px; }
+body.portrait .objective { max-width: min(340px, 68vw); font-size: 13.5px; line-height: 1.35; }
+body.portrait .meter .lbl { font-size: 13px; }
+body.portrait .meter .lbl b { font-size: 16px; }
+body.portrait .iconbtn { width: 40px; height: 40px; }
+body.portrait #toasts { top: calc(60px + env(safe-area-inset-top, 0px)); right: 10px; }
+body.portrait .toast { max-width: 270px; font-size: 13px; }
+
+/* Dialogue : ancré en bas, pleine largeur ; le portrait devient une pastille ronde sur le bord du cadre */
+body.portrait #dialogue { left: 0; right: 0; width: auto; transform: none; bottom: calc(10px + var(--safe-b)); padding: 0 10px; }
+body.portrait #dialogue .box { min-height: 0; max-height: calc(var(--vh-px, 100vh) * .56); padding: 24px 18px 28px; border-radius: 20px; display: flex; flex-direction: column; }
+body.portrait #dialogue.has-left .box, body.portrait #dialogue.has-right .box { padding-left: 16px; padding-right: 16px; }
+body.portrait #dialogue .portrait, body.portrait #dialogue .portrait.left, body.portrait #dialogue .portrait.right { width: 70px; height: 70px; top: -34px; bottom: auto; left: 12px; right: auto; border-radius: 50%; overflow: hidden; background: var(--gold); border: 3px solid var(--plum); box-shadow: 0 6px 16px #0008; }
+body.portrait #dialogue .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; filter: none; }
+body.portrait #dialogue .portrait .ov { position: absolute; inset: 0; }
+body.portrait #dialogue.has-left .name, body.portrait #dialogue.has-right .name { margin-left: 68px; max-width: calc(100% - 68px); }
+body.portrait #dialogue .name { flex: none; align-self: flex-start; font-size: clamp(18px, 5vw, 20px); padding: 3px 16px; margin-bottom: 8px; }
+body.portrait #dialogue .text { flex: 1 1 auto; min-height: 3.4em; overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y; font-size: clamp(17px, 4.9vw, 19px); line-height: 1.55; letter-spacing: .005em; padding-right: 2px; }
+body.portrait #dialogue .text.narr, body.portrait #dialogue .text.think { line-height: 1.6; }
+body.portrait #dialogue .real { margin-left: 8px; font-size: 11px; letter-spacing: .04em; padding: 2px 8px; background: var(--plum); color: var(--gold); }
+body.portrait #dialogue .text.long { font-size: clamp(16px, 4.5vw, 17px); line-height: 1.5; }
+body.portrait #dialogue .next, body.portrait #dialogue.has-right .next { right: 18px; bottom: 8px; font-size: 16px; }
+body.portrait #choices { margin-bottom: 10px; gap: 10px; max-height: calc(var(--vh-px, 100vh) * .62); overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
+body.portrait #choices button { width: 100%; font-size: clamp(17px, 4.7vw, 18.5px); line-height: 1.4; padding: 14px 16px; min-height: 56px; border-radius: 16px; }
+body.portrait #choices button .k { width: 26px; height: 26px; line-height: 26px; font-size: 14px; margin-right: 12px; }
+body.portrait #choices button:hover, body.portrait #choices button.sel { transform: none; }
+body.portrait #choices button:active { background: #54307a; border-color: var(--gold); }
+body.portrait #choices .prompt { font-size: clamp(18px, 5vw, 20px); line-height: 1.35; text-align: center; margin-bottom: 2px; padding: 5px 16px; border-radius: 999px; background: rgba(29, 16, 40, .86); text-shadow: none; }
+
+/* Boutons du pouce : dans le panneau, gros, loin des bords de l'écran ; masqués pendant un dialogue */
+body.portrait #touch { --tb: 68px; --gap: 12px; }
+body.portrait #touch button { bottom: calc(34px + var(--safe-b)); }
+body.portrait #prompt { bottom: calc(var(--panel-h) + 12px); max-width: calc(100vw - 24px); white-space: normal; text-align: center; font-size: 15.5px; padding: 9px 18px; }
+
+/* Téléphone-dans-le-jeu, mini-jeux, modales : utilisent toute la largeur disponible */
+body.portrait .device { width: calc(100vw - 14px); max-width: 430px; border-radius: 38px; padding: 9px; }
+body.portrait .screen { border-radius: 30px; }
+body.portrait .chat-head b { font-size: 17px; }
+body.portrait .chat-head small { font-size: 13px; }
+body.portrait .msgs { gap: 8px; padding: 14px 10px; }
+body.portrait .msg { max-width: 84%; font-size: 16.5px; line-height: 1.42; padding: 9px 13px; }
+body.portrait .msg .who { font-size: 13px; }
+body.portrait .msg.sys { font-size: 13.5px; }
+body.portrait .replies { gap: 8px; }
+body.portrait .replies button { font-size: 16.5px; line-height: 1.38; padding: 12px 14px; min-height: 50px; border-radius: 16px; }
+body.portrait .reimag { font-size: 11.5px; }
+body.portrait .modal .muted, body.portrait .mg p { font-size: 15px; line-height: 1.45; }
+body.portrait .mg .fb { font-size: 16.5px; line-height: 1.45; }
+body.portrait .modal { padding: 10px; }
+body.portrait .modal .sheet { padding: 18px 16px; border-radius: 18px; }
+body.portrait .mem-detail { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+body.portrait .gallery { grid-template-columns: repeat(2, 1fr); }
+body.portrait .mg { padding: 8px; }
+body.portrait .mg .sheet { padding: 16px 14px; }
+body.portrait .tz-row { grid-template-columns: 78px 1fr; font-size: 12px; }
+body.portrait .letter { padding: 24px 20px; font-size: 16.5px; }
+body.portrait .opt { flex-wrap: wrap; }
+body.portrait .opt input[type=range] { width: 100%; }
+
+/* Menu principal : texte et boutons en bas, pleine largeur, à portée du pouce */
+body.portrait #menu { align-items: flex-end; background-position: 66% center; }
+body.portrait #menu::before { background: linear-gradient(0deg, rgba(13, 6, 20, .96) 0%, rgba(13, 6, 20, .78) 48%, rgba(13, 6, 20, 0) 86%); }
+body.portrait #menu .panel { width: 100%; max-width: none; padding: 0 22px calc(46px + var(--safe-b)); }
+body.portrait #menu h1 { font-size: clamp(34px, 11vw, 60px); }
+body.portrait #menu .kicker { letter-spacing: .22em; font-size: 11px; }
+body.portrait .menu-buttons { align-items: stretch; width: 100%; }
+body.portrait .menu-buttons .btn { text-align: center; padding: 14px 22px; font-size: 16px; }
+body.portrait .btn:hover, body.portrait .btn:focus-visible { transform: none; }
+body.portrait #menu .credit { right: auto; left: 0; width: 100%; text-align: center; bottom: calc(12px + var(--safe-b)); }
+
+/* Cartes de chapitre et cinématiques */
+body.portrait #card { padding: 24px 22px; }
+body.portrait #cine .lines { padding: 60px 18px calc(30px + var(--safe-b)); }

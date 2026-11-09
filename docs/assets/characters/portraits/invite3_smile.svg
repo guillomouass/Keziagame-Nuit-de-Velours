@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <g transform="translate(32 330) scale(2.4)"><g><path d="M18 34 Q20 8 50 3 L90 3 Q120 8 122 34 L117 116 Q70 126 23 116 Z" fill="#b84a6b"/><path d="M23 116 Q70 126 117 116 L118 100 Q70 110 22 100 Z" fill="#963a56" opacity="0.7"/><path d="M52 3 Q70 22 88 3" fill="#b88863"/><path d="M50 3 Q70 26 90 3" fill="none" stroke="#963a56" stroke-width="4"/><path d="M48 60 l8 -10 l8 10 l8 -10 l8 10" fill="none" stroke="#fff" stroke-width="3" opacity="0.65"/></g></g>
+  <g transform="translate(0 -32) scale(2)"><g>
+  <defs>
+  <radialGradient id="skpinvite3smile" cx="0.42" cy="0.36" r="0.75">
+    <stop offset="0" stop-color="#e9bf9b"/><stop offset="0.7" stop-color="#d9a77f"/><stop offset="1" stop-color="#b88863"/>
+  </radialGradient>
+  <radialGradient id="hrpinvite3smile" cx="0.4" cy="0.3" r="0.8">
+    <stop offset="0" stop-color="undefined"/><stop offset="0.55" stop-color="#4a2e1f"/><stop offset="1" stop-color="#4a2e1f"/>
+  </radialGradient></defs>
+  <path d="M52 110 Q48 52 100 46 Q152 52 148 110 L150 160 Q140 168 126 160 L74 160 Q60 168 50 160 Z" fill="url(#hrpinvite3smile)"/>
+  <rect x="88" y="148" width="24" height="46" rx="8" fill="#b88863"/>
+  <ellipse cx="57" cy="116" rx="8" ry="12" fill="#b88863"/><ellipse cx="143" cy="116" rx="8" ry="12" fill="#b88863"/>
+  <path d="M56 106 Q56 60 100 60 Q144 60 144 106 Q144 150 120 160 Q100 168 80 160 Q56 150 56 106 Z" fill="url(#skpinvite3smile)"/>
+  
+  <ellipse cx="74" cy="131" rx="9" ry="5.5" fill="#ff6f6f" opacity="0.22"/><ellipse cx="126" cy="131" rx="9" ry="5.5" fill="#ff6f6f" opacity="0.22"/>
+  <path d="M76 114 Q83 106 90 114" fill="none" stroke="#1a1110" stroke-width="3.4" stroke-linecap="round"/><path d="M110 114 Q117 106 124 114" fill="none" stroke="#1a1110" stroke-width="3.4" stroke-linecap="round"/><path d="M76 108 l-4 -3 M124 108 l4 -3" stroke="#1a1110" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M73 99 Q82 94 91 98" fill="none" stroke="#3a2416" stroke-width="3.6" stroke-linecap="round"/><path d="M109 98 Q118 94 127 99" fill="none" stroke="#3a2416" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M97 119 Q99 128 105 127" fill="none" stroke="#b88863" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M87 136 Q100 150 113 136" fill="none" stroke="#a85a4c" stroke-width="3.6" stroke-linecap="round"/>
+  
+  <path d="M56 112 C54 64 76 52 100 52 C128 52 148 66 146 112 C130 90 112 80 98 82 C86 92 70 100 56 112 Z" fill="url(#hrpinvite3smile)"/>
+</g></g></svg>

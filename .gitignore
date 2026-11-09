@@ -1,0 +1,17 @@
+# Dépendances et fichiers générés
+node_modules/
+dist/
+
+# macOS
+.DS_Store
+
+# Secrets et variables d'environnement
+.env
+.env.*
+!.env.example
+
+# Configuration locale Claude
+.claude/
+
+# Fichiers temporaires
+*.log

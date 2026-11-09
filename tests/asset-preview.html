@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>Aperçu des illustrations</title>
+<style>body{background:#777;font-family:sans-serif;margin:8px}img{border:1px solid #0003;margin:2px;vertical-align:top}.p img{height:170px}.h img{height:110px}.bg img{height:150px}</style>
+<div class="p" id="p"></div><div class="h" id="h"></div><div class="bg" id="bg"></div>
+<script>
+const P=['guillo','kezia','staecy'],E=['neutral','smile','laugh','surprised','tease','shy','thinking','tender'];
+const b='/assets/';
+for(const c of P)for(const e of E)p.innerHTML+=`<img src="${b}characters/portraits/${c}_${e}.svg">`;
+for(const n of ['vendeuse','agent','perliere','serveur','garcon','invite1','invite2','invite3','invite4'])p.innerHTML+=`<img src="${b}characters/portraits/${n}_smile.svg">`;
+for(const c of P)h.innerHTML+=`<img src="${b}characters/full/${c}_full.svg">`;
+for(const o of ['collier','badge_nwaja','quille','ticket_foire','cle','micro','message','avion','lettre','coquillage','coquillage_ouvert','brochure','tasse'])h.innerHTML+=`<img src="${b}objects/${o}.svg">`;
+bg.innerHTML+=`<img src="${b}cinematics/cover.svg"><img src="${b}cinematics/cine_necklace.svg">`;
+for(const w of ['event','bowling','fair','studio','paris','malaysia','memories'])bg.innerHTML+=`<br>${w}: `+['far','mid','near'].map(l=>`<img src="${b}backgrounds/bg_${w}_${l}.svg">`).join('');
+for(const s of ['room_night','restaurant','ireland','bed_showroom','train_interior','train_sky'])bg.innerHTML+=`<img src="${b}backgrounds/${s}.svg">`;
+</script>

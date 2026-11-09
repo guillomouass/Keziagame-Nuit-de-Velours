@@ -1,0 +1,1088 @@
+{
+ "images": [
+  {
+   "key": "guillo_head_neutral",
+   "url": "assets/characters/guillo_head_neutral.svg"
+  },
+  {
+   "key": "guillo_head_smile",
+   "url": "assets/characters/guillo_head_smile.svg"
+  },
+  {
+   "key": "guillo_head_laugh",
+   "url": "assets/characters/guillo_head_laugh.svg"
+  },
+  {
+   "key": "guillo_head_surprised",
+   "url": "assets/characters/guillo_head_surprised.svg"
+  },
+  {
+   "key": "guillo_head_blink",
+   "url": "assets/characters/guillo_head_blink.svg"
+  },
+  {
+   "key": "guillo_head_tease",
+   "url": "assets/characters/guillo_head_tease.svg"
+  },
+  {
+   "key": "guillo_head_shy",
+   "url": "assets/characters/guillo_head_shy.svg"
+  },
+  {
+   "key": "guillo_torso",
+   "url": "assets/characters/guillo_torso.svg"
+  },
+  {
+   "key": "guillo_arm",
+   "url": "assets/characters/guillo_arm.svg"
+  },
+  {
+   "key": "guillo_leg",
+   "url": "assets/characters/guillo_leg.svg"
+  },
+  {
+   "key": "kezia_head_neutral",
+   "url": "assets/characters/kezia_head_neutral.svg"
+  },
+  {
+   "key": "kezia_head_smile",
+   "url": "assets/characters/kezia_head_smile.svg"
+  },
+  {
+   "key": "kezia_head_laugh",
+   "url": "assets/characters/kezia_head_laugh.svg"
+  },
+  {
+   "key": "kezia_head_surprised",
+   "url": "assets/characters/kezia_head_surprised.svg"
+  },
+  {
+   "key": "kezia_head_blink",
+   "url": "assets/characters/kezia_head_blink.svg"
+  },
+  {
+   "key": "kezia_head_tease",
+   "url": "assets/characters/kezia_head_tease.svg"
+  },
+  {
+   "key": "kezia_head_shy",
+   "url": "assets/characters/kezia_head_shy.svg"
+  },
+  {
+   "key": "kezia_torso",
+   "url": "assets/characters/kezia_torso.svg"
+  },
+  {
+   "key": "kezia_arm",
+   "url": "assets/characters/kezia_arm.svg"
+  },
+  {
+   "key": "kezia_leg",
+   "url": "assets/characters/kezia_leg.svg"
+  },
+  {
+   "key": "staecy_head_neutral",
+   "url": "assets/characters/staecy_head_neutral.svg"
+  },
+  {
+   "key": "staecy_head_smile",
+   "url": "assets/characters/staecy_head_smile.svg"
+  },
+  {
+   "key": "staecy_head_laugh",
+   "url": "assets/characters/staecy_head_laugh.svg"
+  },
+  {
+   "key": "staecy_head_surprised",
+   "url": "assets/characters/staecy_head_surprised.svg"
+  },
+  {
+   "key": "staecy_head_blink",
+   "url": "assets/characters/staecy_head_blink.svg"
+  },
+  {
+   "key": "staecy_head_tease",
+   "url": "assets/characters/staecy_head_tease.svg"
+  },
+  {
+   "key": "staecy_head_shy",
+   "url": "assets/characters/staecy_head_shy.svg"
+  },
+  {
+   "key": "staecy_torso",
+   "url": "assets/characters/staecy_torso.svg"
+  },
+  {
+   "key": "staecy_arm",
+   "url": "assets/characters/staecy_arm.svg"
+  },
+  {
+   "key": "staecy_leg",
+   "url": "assets/characters/staecy_leg.svg"
+  },
+  {
+   "key": "kezia_torso_pearl",
+   "url": "assets/characters/kezia_torso_pearl.svg"
+  },
+  {
+   "key": "invite1_head_neutral",
+   "url": "assets/characters/invite1_head_neutral.svg"
+  },
+  {
+   "key": "invite1_head_smile",
+   "url": "assets/characters/invite1_head_smile.svg"
+  },
+  {
+   "key": "invite1_head_blink",
+   "url": "assets/characters/invite1_head_blink.svg"
+  },
+  {
+   "key": "invite1_head_laugh",
+   "url": "assets/characters/invite1_head_laugh.svg"
+  },
+  {
+   "key": "invite1_head_surprised",
+   "url": "assets/characters/invite1_head_surprised.svg"
+  },
+  {
+   "key": "invite1_torso",
+   "url": "assets/characters/invite1_torso.svg"
+  },
+  {
+   "key": "invite1_arm",
+   "url": "assets/characters/invite1_arm.svg"
+  },
+  {
+   "key": "invite1_leg",
+   "url": "assets/characters/invite1_leg.svg"
+  },
+  {
+   "key": "invite2_head_neutral",
+   "url": "assets/characters/invite2_head_neutral.svg"
+  },
+  {
+   "key": "invite2_head_smile",
+   "url": "assets/characters/invite2_head_smile.svg"
+  },
+  {
+   "key": "invite2_head_blink",
+   "url": "assets/characters/invite2_head_blink.svg"
+  },
+  {
+   "key": "invite2_head_laugh",
+   "url": "assets/characters/invite2_head_laugh.svg"
+  },
+  {
+   "key": "invite2_head_surprised",
+   "url": "assets/characters/invite2_head_surprised.svg"
+  },
+  {
+   "key": "invite2_torso",
+   "url": "assets/characters/invite2_torso.svg"
+  },
+  {
+   "key": "invite2_arm",
+   "url": "assets/characters/invite2_arm.svg"
+  },
+  {
+   "key": "invite2_leg",
+   "url": "assets/characters/invite2_leg.svg"
+  },
+  {
+   "key": "invite3_head_neutral",
+   "url": "assets/characters/invite3_head_neutral.svg"
+  },
+  {
+   "key": "invite3_head_smile",
+   "url": "assets/characters/invite3_head_smile.svg"
+  },
+  {
+   "key": "invite3_head_blink",
+   "url": "assets/characters/invite3_head_blink.svg"
+  },
+  {
+   "key": "invite3_head_laugh",
+   "url": "assets/characters/invite3_head_laugh.svg"
+  },
+  {
+   "key": "invite3_head_surprised",
+   "url": "assets/characters/invite3_head_surprised.svg"
+  },
+  {
+   "key": "invite3_torso",
+   "url": "assets/characters/invite3_torso.svg"
+  },
+  {
+   "key": "invite3_arm",
+   "url": "assets/characters/invite3_arm.svg"
+  },
+  {
+   "key": "invite3_leg",
+   "url": "assets/characters/invite3_leg.svg"
+  },
+  {
+   "key": "invite4_head_neutral",
+   "url": "assets/characters/invite4_head_neutral.svg"
+  },
+  {
+   "key": "invite4_head_smile",
+   "url": "assets/characters/invite4_head_smile.svg"
+  },
+  {
+   "key": "invite4_head_blink",
+   "url": "assets/characters/invite4_head_blink.svg"
+  },
+  {
+   "key": "invite4_head_laugh",
+   "url": "assets/characters/invite4_head_laugh.svg"
+  },
+  {
+   "key": "invite4_head_surprised",
+   "url": "assets/characters/invite4_head_surprised.svg"
+  },
+  {
+   "key": "invite4_torso",
+   "url": "assets/characters/invite4_torso.svg"
+  },
+  {
+   "key": "invite4_arm",
+   "url": "assets/characters/invite4_arm.svg"
+  },
+  {
+   "key": "invite4_leg",
+   "url": "assets/characters/invite4_leg.svg"
+  },
+  {
+   "key": "garcon_head_neutral",
+   "url": "assets/characters/garcon_head_neutral.svg"
+  },
+  {
+   "key": "garcon_head_smile",
+   "url": "assets/characters/garcon_head_smile.svg"
+  },
+  {
+   "key": "garcon_head_blink",
+   "url": "assets/characters/garcon_head_blink.svg"
+  },
+  {
+   "key": "garcon_head_laugh",
+   "url": "assets/characters/garcon_head_laugh.svg"
+  },
+  {
+   "key": "garcon_head_surprised",
+   "url": "assets/characters/garcon_head_surprised.svg"
+  },
+  {
+   "key": "garcon_torso",
+   "url": "assets/characters/garcon_torso.svg"
+  },
+  {
+   "key": "garcon_arm",
+   "url": "assets/characters/garcon_arm.svg"
+  },
+  {
+   "key": "garcon_leg",
+   "url": "assets/characters/garcon_leg.svg"
+  },
+  {
+   "key": "vendeuse_head_neutral",
+   "url": "assets/characters/vendeuse_head_neutral.svg"
+  },
+  {
+   "key": "vendeuse_head_smile",
+   "url": "assets/characters/vendeuse_head_smile.svg"
+  },
+  {
+   "key": "vendeuse_head_blink",
+   "url": "assets/characters/vendeuse_head_blink.svg"
+  },
+  {
+   "key": "vendeuse_head_laugh",
+   "url": "assets/characters/vendeuse_head_laugh.svg"
+  },
+  {
+   "key": "vendeuse_head_surprised",
+   "url": "assets/characters/vendeuse_head_surprised.svg"
+  },
+  {
+   "key": "vendeuse_torso",
+   "url": "assets/characters/vendeuse_torso.svg"
+  },
+  {
+   "key": "vendeuse_arm",
+   "url": "assets/characters/vendeuse_arm.svg"
+  },
+  {
+   "key": "vendeuse_leg",
+   "url": "assets/characters/vendeuse_leg.svg"
+  },
+  {
+   "key": "agent_head_neutral",
+   "url": "assets/characters/agent_head_neutral.svg"
+  },
+  {
+   "key": "agent_head_smile",
+   "url": "assets/characters/agent_head_smile.svg"
+  },
+  {
+   "key": "agent_head_blink",
+   "url": "assets/characters/agent_head_blink.svg"
+  },
+  {
+   "key": "agent_head_laugh",
+   "url": "assets/characters/agent_head_laugh.svg"
+  },
+  {
+   "key": "agent_head_surprised",
+   "url": "assets/characters/agent_head_surprised.svg"
+  },
+  {
+   "key": "agent_torso",
+   "url": "assets/characters/agent_torso.svg"
+  },
+  {
+   "key": "agent_arm",
+   "url": "assets/characters/agent_arm.svg"
+  },
+  {
+   "key": "agent_leg",
+   "url": "assets/characters/agent_leg.svg"
+  },
+  {
+   "key": "perliere_head_neutral",
+   "url": "assets/characters/perliere_head_neutral.svg"
+  },
+  {
+   "key": "perliere_head_smile",
+   "url": "assets/characters/perliere_head_smile.svg"
+  },
+  {
+   "key": "perliere_head_blink",
+   "url": "assets/characters/perliere_head_blink.svg"
+  },
+  {
+   "key": "perliere_head_laugh",
+   "url": "assets/characters/perliere_head_laugh.svg"
+  },
+  {
+   "key": "perliere_head_surprised",
+   "url": "assets/characters/perliere_head_surprised.svg"
+  },
+  {
+   "key": "perliere_torso",
+   "url": "assets/characters/perliere_torso.svg"
+  },
+  {
+   "key": "perliere_arm",
+   "url": "assets/characters/perliere_arm.svg"
+  },
+  {
+   "key": "perliere_leg",
+   "url": "assets/characters/perliere_leg.svg"
+  },
+  {
+   "key": "serveur_head_neutral",
+   "url": "assets/characters/serveur_head_neutral.svg"
+  },
+  {
+   "key": "serveur_head_smile",
+   "url": "assets/characters/serveur_head_smile.svg"
+  },
+  {
+   "key": "serveur_head_blink",
+   "url": "assets/characters/serveur_head_blink.svg"
+  },
+  {
+   "key": "serveur_head_laugh",
+   "url": "assets/characters/serveur_head_laugh.svg"
+  },
+  {
+   "key": "serveur_head_surprised",
+   "url": "assets/characters/serveur_head_surprised.svg"
+  },
+  {
+   "key": "serveur_torso",
+   "url": "assets/characters/serveur_torso.svg"
+  },
+  {
+   "key": "serveur_arm",
+   "url": "assets/characters/serveur_arm.svg"
+  },
+  {
+   "key": "serveur_leg",
+   "url": "assets/characters/serveur_leg.svg"
+  },
+  {
+   "key": "bg_event_far",
+   "url": "assets/backgrounds/bg_event_far.svg"
+  },
+  {
+   "key": "bg_event_mid",
+   "url": "assets/backgrounds/bg_event_mid.svg"
+  },
+  {
+   "key": "bg_event_near",
+   "url": "assets/backgrounds/bg_event_near.svg"
+  },
+  {
+   "key": "bg_event_fg",
+   "url": "assets/backgrounds/bg_event_fg.svg"
+  },
+  {
+   "key": "bg_bowling_far",
+   "url": "assets/backgrounds/bg_bowling_far.svg"
+  },
+  {
+   "key": "bg_bowling_mid",
+   "url": "assets/backgrounds/bg_bowling_mid.svg"
+  },
+  {
+   "key": "bg_bowling_near",
+   "url": "assets/backgrounds/bg_bowling_near.svg"
+  },
+  {
+   "key": "bg_bowling_fg",
+   "url": "assets/backgrounds/bg_bowling_fg.svg"
+  },
+  {
+   "key": "bg_fair_far",
+   "url": "assets/backgrounds/bg_fair_far.svg"
+  },
+  {
+   "key": "bg_fair_mid",
+   "url": "assets/backgrounds/bg_fair_mid.svg"
+  },
+  {
+   "key": "bg_fair_near",
+   "url": "assets/backgrounds/bg_fair_near.svg"
+  },
+  {
+   "key": "bg_fair_fg",
+   "url": "assets/backgrounds/bg_fair_fg.svg"
+  },
+  {
+   "key": "bg_studio_far",
+   "url": "assets/backgrounds/bg_studio_far.svg"
+  },
+  {
+   "key": "bg_studio_mid",
+   "url": "assets/backgrounds/bg_studio_mid.svg"
+  },
+  {
+   "key": "bg_studio_near",
+   "url": "assets/backgrounds/bg_studio_near.svg"
+  },
+  {
+   "key": "bg_studio_fg",
+   "url": "assets/backgrounds/bg_studio_fg.svg"
+  },
+  {
+   "key": "bg_paris_far",
+   "url": "assets/backgrounds/bg_paris_far.svg"
+  },
+  {
+   "key": "bg_paris_mid",
+   "url": "assets/backgrounds/bg_paris_mid.svg"
+  },
+  {
+   "key": "bg_paris_near",
+   "url": "assets/backgrounds/bg_paris_near.svg"
+  },
+  {
+   "key": "bg_paris_fg",
+   "url": "assets/backgrounds/bg_paris_fg.svg"
+  },
+  {
+   "key": "bg_malaysia_far",
+   "url": "assets/backgrounds/bg_malaysia_far.svg"
+  },
+  {
+   "key": "bg_malaysia_mid",
+   "url": "assets/backgrounds/bg_malaysia_mid.svg"
+  },
+  {
+   "key": "bg_malaysia_near",
+   "url": "assets/backgrounds/bg_malaysia_near.svg"
+  },
+  {
+   "key": "bg_malaysia_fg",
+   "url": "assets/backgrounds/bg_malaysia_fg.svg"
+  },
+  {
+   "key": "bg_memories_far",
+   "url": "assets/backgrounds/bg_memories_far.svg"
+  },
+  {
+   "key": "bg_memories_mid",
+   "url": "assets/backgrounds/bg_memories_mid.svg"
+  },
+  {
+   "key": "bg_memories_near",
+   "url": "assets/backgrounds/bg_memories_near.svg"
+  },
+  {
+   "key": "bg_memories_fg",
+   "url": "assets/backgrounds/bg_memories_fg.svg"
+  },
+  {
+   "key": "room_night",
+   "url": "assets/backgrounds/room_night.svg"
+  },
+  {
+   "key": "restaurant",
+   "url": "assets/backgrounds/restaurant.svg"
+  },
+  {
+   "key": "restaurant_table",
+   "url": "assets/backgrounds/restaurant_table.svg"
+  },
+  {
+   "key": "ireland",
+   "url": "assets/backgrounds/ireland.svg"
+  },
+  {
+   "key": "bed_showroom",
+   "url": "assets/backgrounds/bed_showroom.svg"
+  },
+  {
+   "key": "train_sky",
+   "url": "assets/backgrounds/train_sky.svg"
+  },
+  {
+   "key": "train_hills",
+   "url": "assets/backgrounds/train_hills.svg"
+  },
+  {
+   "key": "train_trees",
+   "url": "assets/backgrounds/train_trees.svg"
+  },
+  {
+   "key": "train_poles",
+   "url": "assets/backgrounds/train_poles.svg"
+  },
+  {
+   "key": "train_interior",
+   "url": "assets/backgrounds/train_interior.svg"
+  },
+  {
+   "key": "train_table",
+   "url": "assets/backgrounds/train_table.svg"
+  },
+  {
+   "key": "badge_nwaja",
+   "url": "assets/objects/badge_nwaja.svg"
+  },
+  {
+   "key": "etoile",
+   "url": "assets/objects/etoile.svg"
+  },
+  {
+   "key": "quille",
+   "url": "assets/objects/quille.svg"
+  },
+  {
+   "key": "boule",
+   "url": "assets/objects/boule.svg"
+  },
+  {
+   "key": "telephone",
+   "url": "assets/objects/telephone.svg"
+  },
+  {
+   "key": "ticket_foire",
+   "url": "assets/objects/ticket_foire.svg"
+  },
+  {
+   "key": "cle",
+   "url": "assets/objects/cle.svg"
+  },
+  {
+   "key": "coussin",
+   "url": "assets/objects/coussin.svg"
+  },
+  {
+   "key": "collier",
+   "url": "assets/objects/collier.svg"
+  },
+  {
+   "key": "perle",
+   "url": "assets/objects/perle.svg"
+  },
+  {
+   "key": "coquillage",
+   "url": "assets/objects/coquillage.svg"
+  },
+  {
+   "key": "coquillage_ouvert",
+   "url": "assets/objects/coquillage_ouvert.svg"
+  },
+  {
+   "key": "billet_train",
+   "url": "assets/objects/billet_train.svg"
+  },
+  {
+   "key": "micro",
+   "url": "assets/objects/micro.svg"
+  },
+  {
+   "key": "casque",
+   "url": "assets/objects/casque.svg"
+  },
+  {
+   "key": "ringlight",
+   "url": "assets/objects/ringlight.svg"
+  },
+  {
+   "key": "lampe",
+   "url": "assets/objects/lampe.svg"
+  },
+  {
+   "key": "assiette",
+   "url": "assets/objects/assiette.svg"
+  },
+  {
+   "key": "message",
+   "url": "assets/objects/message.svg"
+  },
+  {
+   "key": "avion",
+   "url": "assets/objects/avion.svg"
+  },
+  {
+   "key": "tasse",
+   "url": "assets/objects/tasse.svg"
+  },
+  {
+   "key": "coeur",
+   "url": "assets/objects/coeur.svg"
+  },
+  {
+   "key": "lettre",
+   "url": "assets/objects/lettre.svg"
+  },
+  {
+   "key": "brochure",
+   "url": "assets/objects/brochure.svg"
+  },
+  {
+   "key": "appel",
+   "url": "assets/objects/appel.svg"
+  },
+  {
+   "key": "bulle",
+   "url": "assets/objects/bulle.svg"
+  },
+  {
+   "key": "sparkle",
+   "url": "assets/objects/sparkle.svg"
+  },
+  {
+   "key": "dot",
+   "url": "assets/objects/dot.svg"
+  },
+  {
+   "key": "halo",
+   "url": "assets/objects/halo.svg"
+  },
+  {
+   "key": "shadow",
+   "url": "assets/objects/shadow.svg"
+  },
+  {
+   "key": "cover",
+   "url": "assets/cinematics/cover.svg"
+  },
+  {
+   "key": "cine_necklace",
+   "url": "assets/cinematics/cine_necklace.svg"
+  },
+  {
+   "key": "cine_baiser_guillo_body",
+   "url": "assets/cinematics/cine_baiser_guillo_body.svg"
+  },
+  {
+   "key": "cine_baiser_guillo_head_look",
+   "url": "assets/cinematics/cine_baiser_guillo_head_look.svg"
+  },
+  {
+   "key": "cine_baiser_guillo_head_closed",
+   "url": "assets/cinematics/cine_baiser_guillo_head_closed.svg"
+  },
+  {
+   "key": "cine_baiser_guillo_head_happy",
+   "url": "assets/cinematics/cine_baiser_guillo_head_happy.svg"
+  },
+  {
+   "key": "cine_baiser_kezia_body",
+   "url": "assets/cinematics/cine_baiser_kezia_body.svg"
+  },
+  {
+   "key": "cine_baiser_kezia_head_look",
+   "url": "assets/cinematics/cine_baiser_kezia_head_look.svg"
+  },
+  {
+   "key": "cine_baiser_kezia_head_closed",
+   "url": "assets/cinematics/cine_baiser_kezia_head_closed.svg"
+  },
+  {
+   "key": "cine_baiser_kezia_head_happy",
+   "url": "assets/cinematics/cine_baiser_kezia_head_happy.svg"
+  },
+  {
+   "key": "cine_baiser_kezia_pearl",
+   "url": "assets/cinematics/cine_baiser_kezia_pearl.svg"
+  },
+  {
+   "key": "cine_moon",
+   "url": "assets/cinematics/cine_moon.svg"
+  },
+  {
+   "key": "cine_lantern",
+   "url": "assets/cinematics/cine_lantern.svg"
+  }
+ ],
+ "portraits": [
+  {
+   "key": "guillo_neutral",
+   "url": "assets/characters/portraits/guillo_neutral.svg"
+  },
+  {
+   "key": "guillo_smile",
+   "url": "assets/characters/portraits/guillo_smile.svg"
+  },
+  {
+   "key": "guillo_laugh",
+   "url": "assets/characters/portraits/guillo_laugh.svg"
+  },
+  {
+   "key": "guillo_surprised",
+   "url": "assets/characters/portraits/guillo_surprised.svg"
+  },
+  {
+   "key": "guillo_tease",
+   "url": "assets/characters/portraits/guillo_tease.svg"
+  },
+  {
+   "key": "guillo_shy",
+   "url": "assets/characters/portraits/guillo_shy.svg"
+  },
+  {
+   "key": "guillo_thinking",
+   "url": "assets/characters/portraits/guillo_thinking.svg"
+  },
+  {
+   "key": "guillo_tender",
+   "url": "assets/characters/portraits/guillo_tender.svg"
+  },
+  {
+   "key": "kezia_neutral",
+   "url": "assets/characters/portraits/kezia_neutral.svg"
+  },
+  {
+   "key": "kezia_smile",
+   "url": "assets/characters/portraits/kezia_smile.svg"
+  },
+  {
+   "key": "kezia_laugh",
+   "url": "assets/characters/portraits/kezia_laugh.svg"
+  },
+  {
+   "key": "kezia_surprised",
+   "url": "assets/characters/portraits/kezia_surprised.svg"
+  },
+  {
+   "key": "kezia_tease",
+   "url": "assets/characters/portraits/kezia_tease.svg"
+  },
+  {
+   "key": "kezia_shy",
+   "url": "assets/characters/portraits/kezia_shy.svg"
+  },
+  {
+   "key": "kezia_thinking",
+   "url": "assets/characters/portraits/kezia_thinking.svg"
+  },
+  {
+   "key": "kezia_tender",
+   "url": "assets/characters/portraits/kezia_tender.svg"
+  },
+  {
+   "key": "staecy_neutral",
+   "url": "assets/characters/portraits/staecy_neutral.svg"
+  },
+  {
+   "key": "staecy_smile",
+   "url": "assets/characters/portraits/staecy_smile.svg"
+  },
+  {
+   "key": "staecy_laugh",
+   "url": "assets/characters/portraits/staecy_laugh.svg"
+  },
+  {
+   "key": "staecy_surprised",
+   "url": "assets/characters/portraits/staecy_surprised.svg"
+  },
+  {
+   "key": "staecy_tease",
+   "url": "assets/characters/portraits/staecy_tease.svg"
+  },
+  {
+   "key": "staecy_shy",
+   "url": "assets/characters/portraits/staecy_shy.svg"
+  },
+  {
+   "key": "staecy_thinking",
+   "url": "assets/characters/portraits/staecy_thinking.svg"
+  },
+  {
+   "key": "staecy_tender",
+   "url": "assets/characters/portraits/staecy_tender.svg"
+  },
+  {
+   "key": "kezia_pearl_overlay",
+   "url": "assets/characters/portraits/kezia_pearl_overlay.svg"
+  },
+  {
+   "key": "invite1_neutral",
+   "url": "assets/characters/portraits/invite1_neutral.svg"
+  },
+  {
+   "key": "invite1_smile",
+   "url": "assets/characters/portraits/invite1_smile.svg"
+  },
+  {
+   "key": "invite1_laugh",
+   "url": "assets/characters/portraits/invite1_laugh.svg"
+  },
+  {
+   "key": "invite1_surprised",
+   "url": "assets/characters/portraits/invite1_surprised.svg"
+  },
+  {
+   "key": "invite2_neutral",
+   "url": "assets/characters/portraits/invite2_neutral.svg"
+  },
+  {
+   "key": "invite2_smile",
+   "url": "assets/characters/portraits/invite2_smile.svg"
+  },
+  {
+   "key": "invite2_laugh",
+   "url": "assets/characters/portraits/invite2_laugh.svg"
+  },
+  {
+   "key": "invite2_surprised",
+   "url": "assets/characters/portraits/invite2_surprised.svg"
+  },
+  {
+   "key": "invite3_neutral",
+   "url": "assets/characters/portraits/invite3_neutral.svg"
+  },
+  {
+   "key": "invite3_smile",
+   "url": "assets/characters/portraits/invite3_smile.svg"
+  },
+  {
+   "key": "invite3_laugh",
+   "url": "assets/characters/portraits/invite3_laugh.svg"
+  },
+  {
+   "key": "invite3_surprised",
+   "url": "assets/characters/portraits/invite3_surprised.svg"
+  },
+  {
+   "key": "invite4_neutral",
+   "url": "assets/characters/portraits/invite4_neutral.svg"
+  },
+  {
+   "key": "invite4_smile",
+   "url": "assets/characters/portraits/invite4_smile.svg"
+  },
+  {
+   "key": "invite4_laugh",
+   "url": "assets/characters/portraits/invite4_laugh.svg"
+  },
+  {
+   "key": "invite4_surprised",
+   "url": "assets/characters/portraits/invite4_surprised.svg"
+  },
+  {
+   "key": "garcon_neutral",
+   "url": "assets/characters/portraits/garcon_neutral.svg"
+  },
+  {
+   "key": "garcon_smile",
+   "url": "assets/characters/portraits/garcon_smile.svg"
+  },
+  {
+   "key": "garcon_laugh",
+   "url": "assets/characters/portraits/garcon_laugh.svg"
+  },
+  {
+   "key": "garcon_surprised",
+   "url": "assets/characters/portraits/garcon_surprised.svg"
+  },
+  {
+   "key": "vendeuse_neutral",
+   "url": "assets/characters/portraits/vendeuse_neutral.svg"
+  },
+  {
+   "key": "vendeuse_smile",
+   "url": "assets/characters/portraits/vendeuse_smile.svg"
+  },
+  {
+   "key": "vendeuse_laugh",
+   "url": "assets/characters/portraits/vendeuse_laugh.svg"
+  },
+  {
+   "key": "vendeuse_surprised",
+   "url": "assets/characters/portraits/vendeuse_surprised.svg"
+  },
+  {
+   "key": "agent_neutral",
+   "url": "assets/characters/portraits/agent_neutral.svg"
+  },
+  {
+   "key": "agent_smile",
+   "url": "assets/characters/portraits/agent_smile.svg"
+  },
+  {
+   "key": "agent_laugh",
+   "url": "assets/characters/portraits/agent_laugh.svg"
+  },
+  {
+   "key": "agent_surprised",
+   "url": "assets/characters/portraits/agent_surprised.svg"
+  },
+  {
+   "key": "perliere_neutral",
+   "url": "assets/characters/portraits/perliere_neutral.svg"
+  },
+  {
+   "key": "perliere_smile",
+   "url": "assets/characters/portraits/perliere_smile.svg"
+  },
+  {
+   "key": "perliere_laugh",
+   "url": "assets/characters/portraits/perliere_laugh.svg"
+  },
+  {
+   "key": "perliere_surprised",
+   "url": "assets/characters/portraits/perliere_surprised.svg"
+  },
+  {
+   "key": "serveur_neutral",
+   "url": "assets/characters/portraits/serveur_neutral.svg"
+  },
+  {
+   "key": "serveur_smile",
+   "url": "assets/characters/portraits/serveur_smile.svg"
+  },
+  {
+   "key": "serveur_laugh",
+   "url": "assets/characters/portraits/serveur_laugh.svg"
+  },
+  {
+   "key": "serveur_surprised",
+   "url": "assets/characters/portraits/serveur_surprised.svg"
+  }
+ ],
+ "audio": [
+  {
+   "key": "music_menu",
+   "url": "assets/music/menu.wav"
+  },
+  {
+   "key": "music_explore",
+   "url": "assets/music/explore.wav"
+  },
+  {
+   "key": "music_fair",
+   "url": "assets/music/fair.wav"
+  },
+  {
+   "key": "music_tender",
+   "url": "assets/music/tender.wav"
+  },
+  {
+   "key": "music_night",
+   "url": "assets/music/night.wav"
+  },
+  {
+   "key": "music_final",
+   "url": "assets/music/final.wav"
+  },
+  {
+   "key": "sfx_blip",
+   "url": "assets/sounds/blip.wav"
+  },
+  {
+   "key": "sfx_select",
+   "url": "assets/sounds/select.wav"
+  },
+  {
+   "key": "sfx_confirm",
+   "url": "assets/sounds/confirm.wav"
+  },
+  {
+   "key": "sfx_collect",
+   "url": "assets/sounds/collect.wav"
+  },
+  {
+   "key": "sfx_heart",
+   "url": "assets/sounds/heart.wav"
+  },
+  {
+   "key": "sfx_notif",
+   "url": "assets/sounds/notif.wav"
+  },
+  {
+   "key": "sfx_ring",
+   "url": "assets/sounds/ring.wav"
+  },
+  {
+   "key": "sfx_jump",
+   "url": "assets/sounds/jump.wav"
+  },
+  {
+   "key": "sfx_roll",
+   "url": "assets/sounds/roll.wav"
+  },
+  {
+   "key": "sfx_strike",
+   "url": "assets/sounds/strike.wav"
+  },
+  {
+   "key": "sfx_shell",
+   "url": "assets/sounds/shell.wav"
+  },
+  {
+   "key": "sfx_whoosh",
+   "url": "assets/sounds/whoosh.wav"
+  },
+  {
+   "key": "sfx_success",
+   "url": "assets/sounds/success.wav"
+  },
+  {
+   "key": "sfx_laugh",
+   "url": "assets/sounds/laugh.wav"
+  },
+  {
+   "key": "sfx_page",
+   "url": "assets/sounds/page.wav"
+  },
+  {
+   "key": "sfx_miss",
+   "url": "assets/sounds/miss.wav"
+  },
+  {
+   "key": "sfx_beat",
+   "url": "assets/sounds/beat.wav"
+  },
+  {
+   "key": "sfx_train",
+   "url": "assets/sounds/train.wav"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g>
+  <defs>
+  <radialGradient id="skperliereblink" cx="0.42" cy="0.36" r="0.75">
+    <stop offset="0" stop-color="#7a4c32"/><stop offset="0.7" stop-color="#5e3824"/><stop offset="1" stop-color="#462817"/>
+  </radialGradient>
+  <radialGradient id="hrperliereblink" cx="0.4" cy="0.3" r="0.8">
+    <stop offset="0" stop-color="undefined"/><stop offset="0.55" stop-color="#120c0a"/><stop offset="1" stop-color="#120c0a"/>
+  </radialGradient></defs>
+  <path d="M54 104 Q46 30 100 26 Q156 30 146 104 Z" fill="#2f8f83"/>
+  <rect x="88" y="148" width="24" height="46" rx="8" fill="#462817"/>
+  <ellipse cx="57" cy="116" rx="8" ry="12" fill="#462817"/><ellipse cx="143" cy="116" rx="8" ry="12" fill="#462817"/>
+  <path d="M56 106 Q56 60 100 60 Q144 60 144 106 Q144 150 120 160 Q100 168 80 160 Q56 150 56 106 Z" fill="url(#skperliereblink)"/>
+  
+  <ellipse cx="74" cy="131" rx="9" ry="5.5" fill="#ff6f6f" opacity="0.22"/><ellipse cx="126" cy="131" rx="9" ry="5.5" fill="#ff6f6f" opacity="0.22"/>
+  <path d="M76 115 Q83 118 90 115" fill="none" stroke="#1a1110" stroke-width="3.4" stroke-linecap="round"/><path d="M110 115 Q117 118 124 115" fill="none" stroke="#1a1110" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M73 99 Q82 94 91 98" fill="none" stroke="#1a1110" stroke-width="3.6" stroke-linecap="round"/><path d="M109 98 Q118 94 127 99" fill="none" stroke="#1a1110" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M97 119 Q99 128 105 127" fill="none" stroke="#462817" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M87 136 Q100 150 113 136" fill="none" stroke="#6a2c22" stroke-width="3.6" stroke-linecap="round"/>
+  <circle cx="56" cy="130" r="4.5" fill="#f4c25a"/><circle cx="144" cy="130" r="4.5" fill="#f4c25a"/>
+  <path d="M56 96 Q60 58 100 54 Q140 58 144 96 Q120 84 100 86 Q80 84 56 96 Z" fill="#2f8f83"/><path d="M70 60 Q100 46 130 60 M64 76 Q100 62 136 76" stroke="#fff" stroke-width="2" opacity="0.35" fill="none"/><path d="M118 30 Q140 16 150 34 Q136 40 120 40 Z" fill="#2f8f83"/>
+</g></svg>
